@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dep-postgres
+  labels:
+    app: myapp
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      type: back-end_db
+      app: myapp
+  template:
+    metadata:
+      name: postgres-pod
+      labels:
+        type: back-end_db
+        app: myapp
+
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:9.4
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POSTGRES_DB
+              value: db0
+            - name: POSTGRES_USER
+              value: iliass
+            - name: POSTGRES_PASSWORD
+              value: iliass
