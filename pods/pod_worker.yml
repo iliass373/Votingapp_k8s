@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: worker_pod
+  name: worker-pod
   labels:
     type: back-end
     app: myapp
